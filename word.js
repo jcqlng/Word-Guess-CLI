@@ -1,6 +1,5 @@
 // word constructor that uses the letter.js file to create input data 
 var Letter = require("./letter");
-const { threadId } = require("worker_threads");
 // function to pull and display answers through word arrays
 function Word(wordArr) {
     this.wordArr = wordArr;
@@ -8,14 +7,21 @@ function Word(wordArr) {
     this.makeWord = function(){
         for (var i = 0; i < wordArr.length; i++) {
             var let = new Letter(wordArr[i]);
-            threadId.testWord.push(let);
+            this.testWord.push(let);
+        }
+    }
+    // Displays the word
+    this.showWord = function() {
+        var wordDisplay = [];
+        for (var i = 0; i < testWord.length; i++) {
+            wordDisplay.push(this.testWord[i].displayLet());
+        }
+    }
+    this.checkGuess = function(userGuess) {
+        for (let i = 0; i < this.testWord.length; i++) {
+            this.testWord[i].check(userGuess);
         }
     }
 }
-this.showWord = function() {
-    var wordDisplay = [];
-    for (var i = 0; i < testWord.length; i++) {
-        wordDisplay.push(this.testWord[i].displayLet());
-        
-    }
-}
+// Node module to export the correct word
+module.exports = Word
