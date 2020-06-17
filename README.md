@@ -1,5 +1,5 @@
 # Word-Guess-CLI
-Word Guess command-line game using constructor functions. In this one I decided to choose the theme as guess the characters in the Playstation game, God of War. 
+This app is a hangman-style word game that uses Node and Inquirer package as a command-line game using constructor functions. The index.js file will be the main source to run the game and has a dependency on the word.js file for the array of words. As for the word.js file it will depend on the letter.js files that store the letters guessed. I allowed the user to have 10 guesses of letters to put together a characters in the Playstation game, God of War. 
 
 # Description of files -- From UCF Bootcamp Instructions 
 
@@ -27,6 +27,12 @@ Word Guess command-line game using constructor functions. In this one I decided 
 
   * Prompts the user for each guess and keeps track of the user's remaining guesses
 
-3. `Letter.js` *should not* `require` any other files.
+# Packages and Dependencies 
+* Inquirer.js - https://www.npmjs.com/package/inquirer
+* Node - https://www.npmjs.com/package/node
+* Colors - https://www.npmjs.com/package/colors 
 
-4. `Word.js` *should only* require `Letter.js`
+# Authors and Acknowledgement 
+* For the character name source for the theme - https://en.wikipedia.org/wiki/Characters_of_God_of_War 
+*  For an example of some code - https://www.npmjs.com/package/constructor-word-guess-2
+* For an idea on how the code layout should look - https://gist.github.com/saltavenger/3939185 
