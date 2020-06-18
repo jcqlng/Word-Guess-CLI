@@ -11,14 +11,21 @@ function Letter(alpha) {
             return "_";
         }
         else {
-            return this.alpha;
+            return this.alpha.toString();
         }
     }
     // function to check input
     this.check = function(userGuess) {
-        if (userGuess === this.alpha) {
+
+        if(this.guessed) {
             this.guessed = true;
         }
+        else if (userGuess === this.alpha) {
+            this.guessed = true;
+        }else {
+            this.guessed = false;
+        }
+        return;
     }
 }
 
