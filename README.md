@@ -1,6 +1,9 @@
 # Word-Guess-CLI
 This app is a hangman-style word game that uses Node and Inquirer package as a command-line game using constructor functions. The index.js file will be the main source to run the game and has a dependency on the word.js file for the array of words. As for the word.js file it will depend on the letter.js files that store the letters guessed. I allowed the user to have 10 guesses of letters to put together a characters in the Playstation game, God of War. 
 
+You start the game by running node index.js in the terminal. Once that is done then the game will load and say "You have 10 attempts to guess a character name from the game God of War.". You enter the letter one at a time. Below is a gif of the node app:
+![tutorial](tutorial.gif)
+
 # Description of files -- From UCF Bootcamp Instructions 
 
 * **Letter.js**: Contains a constructor, Letter. This constructor should be able to either display an underlying character or a blank placeholder (such as an underscore), depending on whether or not the user has guessed the letter. That means the constructor should define:
