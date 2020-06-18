@@ -2,7 +2,7 @@
 var Word = require("./word");
 var inquirer = require('inquirer');
 var colors = require('colors');
-const { BADFAMILY } = require("dns");
+const dns = require("dns");
 // Array of character names,  the time, guesses, and the words chosen from the list 
 wordList = ["Kratos", "Atreus", "Zeus", "Odin", "Athena", "Gaia", "Hades", "Ares", "Aphrodite"];
 var select = 0;
@@ -12,16 +12,16 @@ var counter = 0;
 // Choses a character name from the word array  and commences the game
 function startGame() {
     if (wordList.length){
-        wordList = ["Kratos", "Atreus", "Zeus", "Odin", "Athena", "Gaia", "Hades", "Ares", "Aphrodite"];
+        wordList = ["KRATOS", "ATREUS", "ZEUS", "ODIN", "ATHENA", "GAIA", "HADES", "ARES", "APHRODITE"];
     }
-    select = Math.floor(Math.random()*wordList.Length);
+    select = Math.floor(Math.random()* wordList.length);
     chosenWord = wordList [select];
+    //set a new word
     gameWord = new Word(chosenWord);
     gameWord.makeWord();
-    if (select > -1) {
-        wordList.splice(select,1);
-    }    
+    
     console.log ("\nYou have 10 attempts to guess a character name from the game God of War.\n".magenta)
+    
     promptUser();
 }
 // The user guesses 10 letters in order to get the right answer, if not then the game will reset and displays message
@@ -31,14 +31,14 @@ function promptUser() {
             {
                 type: "input",
                 name: "letter",
-                message: "\nType letter then hit enter key.\n".magenta
+                message: ('(' + gameWord.showWord() + ')' +'\nType letter then hit enter key.\n').magenta
             }
         ]).then(function(data){
             checkAnswer(data);
         });
     }
     else {
-        console.log("\nOut of guesses!\n".red);
+        console.log("\nOut of guesses!\nResetting the game".red);
         console.log(chosenWord.red)
         chosenWord = " "; 
         gameWord = " ";
@@ -52,12 +52,13 @@ function promptUser() {
 function checkAnswer(data) {
     if ((data.letter.length === 1) && /^[a-zA-Z]+$/.test(data.letter)) {
         var checkable = data.letter.toUpperCase();
-        var temp = gameWord.showWord();
+        
         gameWord.checkGuess(checkable);
-        if (temp === gameWord.showWord()) {
-            console.log("\nToo bad, you didn't get it right!\n".red);
+
+        if ( !gameWord.equals(chosenWord) ) {
+            console.log("\nNot yet! Keep guessing!\n".red);
             counter++;
-            console.log((10 - counter) + "Guesses Remaining".yellow);
+            console.log((10 - counter) + " Guesses Remaining".yellow);
             promptUser();
         } 
         else {
