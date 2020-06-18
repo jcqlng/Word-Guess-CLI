@@ -35,4 +35,5 @@ This app is a hangman-style word game that uses Node and Inquirer package as a c
 # Authors and Acknowledgement 
 * For the character name source for the theme - https://en.wikipedia.org/wiki/Characters_of_God_of_War 
 *  For an example of some code - https://www.npmjs.com/package/constructor-word-guess-2
-* For an idea on how the code layout should look - https://gist.github.com/saltavenger/3939185 
+* For an idea on how the code layout should look - https://gist.github.com/saltavenger/3939185  
+https://www.codeproject.com/Articles/61917/Hangman-Game 
